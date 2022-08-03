@@ -14,6 +14,15 @@ export class App extends Component {
     ],
     filter: '',
   };
+  componentDidMount() {
+    const locContacts = localStorage.getItem('contacts');
+    if (locContacts) {
+      this.setState({ contacts: JSON.parse(locContacts) });
+    }
+  }
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
   addContact = (name, number) => {
     const names = this.state.contacts.map(contact => contact.name);
 
@@ -50,18 +59,13 @@ export class App extends Component {
   render() {
     return (
       <>
-
-          <Section title="Phonebook">
-            <ContactForm onSubmit={this.addContact} />
-          </Section>
-          <Section title="Contacts">
-            <Filter onChange={this.handleInput} />
-            <ContactList
-              contacts={this.contactList()}
-              deleteId={this.deleteId}
-            />
-          </Section>
-
+        <Section title="Phonebook">
+          <ContactForm onSubmit={this.addContact} />
+        </Section>
+        <Section title="Contacts">
+          <Filter onChange={this.handleInput} />
+          <ContactList contacts={this.contactList()} deleteId={this.deleteId} />
+        </Section>
       </>
     );
   }
