@@ -10,9 +10,5 @@ export const Filter = ({ onChange }) => {
   );
 };
 PropTypes.Filter = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  number: PropTypes.number.isRequired,
-
   onChange: PropTypes.func.isRequired,
 };

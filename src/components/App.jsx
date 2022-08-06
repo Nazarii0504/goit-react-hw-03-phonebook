@@ -23,6 +23,7 @@ export class App extends Component {
   componentDidUpdate() {
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
+  
   addContact = (name, number) => {
     const names = this.state.contacts.map(contact => contact.name);
 
@@ -48,6 +49,7 @@ export class App extends Component {
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
+
   contactList = () => {
     const { contacts, filter } = this.state;
     const lowercaseFilter = filter.toLowerCase();
