@@ -6,7 +6,10 @@ export class ContactForm extends Component {
     name: '',
     number: '',
   };
-
+static={
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};}
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
